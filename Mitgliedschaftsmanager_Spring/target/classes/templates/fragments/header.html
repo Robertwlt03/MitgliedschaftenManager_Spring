@@ -1,0 +1,38 @@
+<header class="navbar" th:fragment="header">
+    <div class="project-name">
+        <h2>Mitgliedschaften-Manager</h2>
+        <a href="https://spring.io/" target="_blank" class="framework-name">Spring</a>
+    </div>
+
+    <nav class="navbar-links-wrapper">
+        <a href="/"
+           th:classappend="${page == 'homepage'} ? 'active-link'">
+            Homepage
+        </a>
+
+        <a href="/add"
+           th:classappend="${page == 'add'} ? 'active-link'">
+            Hinzufügen
+        </a>
+
+        <a href="#"
+           th:if="${page == 'edit'}"
+           class="active-link">
+            Bearbeiten
+        </a>
+    </nav>
+
+    <form class="search-form" th:action="@{/search}" method="get">
+        <div class="greater-search-wrapper">
+            <div class="greater-search-input">
+                <label for="search" hidden></label>
+                <input id="search" type="search" name="keyword" placeholder="Suchen...">
+                <button type="submit" class="clean-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+</header>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<div th:replace="~{fragments/htmlConfig :: html}"></div>
+
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main>
+    <div class="card">
+        <p class="form-header"><i class="fa-solid fa-pen-to-square"></i>Mitglied hinzufügen</p>
+        <!--/*@thymesVar id="mitgliedschaft" type="r.walter.Mitgliedschaftenmanager_Spring.model.Mitgliedschaft"*/-->
+        <form id="createForm" th:action="@{/sql/save}" th:object="${mitgliedschaft}" method="post">
+            <input type="hidden" name="eintrittsdatum" th:field="*{eintrittsdatum}"/>
+
+            <div class="input-wrapper">
+                <label for="vorname">Vorname:</label>
+                <input required id="vorname" type="text" name="vorname" th:field="*{vorname}"/>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="nachname">Nachname:</label>
+                <input required id="nachname" type="text" name="nachname" th:field="*{nachname}"/>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="email">E-Mail:</label>
+                <input required id="email" type="text" name="email" th:field="*{email}"/>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="telefonnummer">Telefonnummer:</label>
+                <input id="telefonnummer" type="text" name="telefonnummer" th:field="*{telefonnummer}"/>
+            </div>
+
+            <div class="input-wrapper">
+                <label  for="status">Status:</label>
+                <select required th:field="*{status}" id="status" name="status" class="form-control">
+                    <option value="Testmitgliedschaft">Testmitgliedschaft</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Premium">Premium</option>
+                    <option value="Business">Business</option>
+                </select>
+            </div>
+
+            <p class="btn-wrapper">
+                <a th:href="@{/}">
+                    <button type="button" class="btn-cancel-green">Abbrechen</button>
+                </a>
+
+                <button type="submit" class="btn-save">Speichern</button>
+            </p>
+        </form>
+    </div>
+</main>
+
+<script th:src="@{/js/mobileMenu.js}"></script>
+</body>
+</html>

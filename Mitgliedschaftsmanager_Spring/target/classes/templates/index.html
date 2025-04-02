@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<!--/*@thymesVar id="mitgliedschaften" type="java.util.List<r.walter.Mitgliedschaftenmanager_Spring.model.Mitgliedschaft>"*/-->
+<!--/*@thymesVar id="mitglied" type="r.walter.Mitgliedschaftenmanager_Spring.model.Mitgliedschaft"*/-->
+
+<div th:replace="~{fragments/htmlConfig :: html}"></div>
+
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<main>
+    <div class="card-layout">
+
+        <div th:if="${mitgliedschaften.size() == 0}">
+            <p>Keine Ergebnisse gefunden.</p>
+        </div>
+
+        <div class="card" th:if="${mitgliedschaften.size() > 0}" th:each="mitglied : ${mitgliedschaften}">
+
+            <p class="member-name" th:text="${mitglied.vorname + ' ' + mitglied.nachname}"></p>
+
+            <div class="member-info-wrapper">
+
+                <p class="member-info"><i class="fa-solid fa-fingerprint"></i>
+                    <span class="info-title">ID:</span>
+                    <span th:text="${mitglied.id}"></span>
+                </p>
+
+                <p class="member-info">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span class="info-title">E-Mail:</span>
+                    <span th:text="${mitglied.email}"></span>
+                </p>
+
+                <p class="member-info"><i class="fa-solid fa-phone"></i>
+                    <span class="info-title">Telefonnummer:</span>
+                    <span th:text="${mitglied.telefonnummer ?: '-'}"></span>
+                </p>
+
+                <p class="member-info"><i class="fa-solid fa-calendar"></i>
+                    <span class="info-title">Eintrittsdatum:</span>
+                    <span th:text="${mitglied.eintrittsdatum}"></span>
+                </p>
+
+                <p class="member-info"><i class="fa-solid fa-calendar"></i>
+                    <span class="info-title">Austrittsdatum:</span>
+                    <span th:text="${mitglied.austrittsdatum ?: '-'}"></span>
+
+                </p>
+
+                <p class="member-info"><i class="fa-solid fa-dollar-sign"></i>
+                    <span class="info-title">Status:</span>
+                    <span th:text="${mitglied.status}"></span>
+                </p>
+            </div>
+
+            <p class="btn-wrapper">
+                <a th:href="@{'/update/' + ${mitglied.id}}">
+                    <button class="btn-edit">Bearbeiten</button>
+                </a>
+
+                <button class="btn-delete open-dialog"
+                        th:attr="data-name=${mitglied.vorname + ' ' + mitglied.nachname},data-id=${mitglied.id}">
+                    Löschen
+                </button>
+            </p>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/Dialogs :: deleteDialog}"></div>
+
+<script th:src="@{/js/ConfirmationDialog.js}"></script>
+<script th:src="@{/js/mobileMenu.js}"></script>
+</body>
+
+</html>
