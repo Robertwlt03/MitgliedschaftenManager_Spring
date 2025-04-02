@@ -1,6 +1,6 @@
 # Mitgliedschaften-Manager - Spring Boot Version
 
-Dieses Repository enthält die Spring Boot-Variante einer Webanwendung zur Verwaltung von Mitgliedschaften. Die Anwendung wurde im Rahmen eines Framework-Vergleichs zwischen Spring Boot und Quarkus entwickelt.
+Dieses Repository enthält die Spring Boot-Variante einer Webanwendung zur Verwaltung von Mitgliedschaften. Die Anwendung ist Teil eines Vergleichs zwischen Quarkus und Spring Boot und fokussiert sich auf moderne Entwicklungsprozesse und schnelle Feedback-Zyklen.
 
 ---
 
@@ -8,7 +8,6 @@ Dieses Repository enthält die Spring Boot-Variante einer Webanwendung zur Verwa
 
 - Mitgliederverwaltung (Erstellen, Anzeigen, Bearbeiten, Löschen)
 - Suchfunktion für Mitglieder
-- Benutzeroberfläche basierend auf Figma-Prototyp
 - PostgreSQL-Datenbank via Docker
 - MVC-Architektur mit Spring Boot & Thymeleaf
 - Saubere Projektstruktur mit Maven
